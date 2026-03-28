@@ -1,0 +1,40 @@
+const mongoose = require('mongoose');
+
+const projectSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  location: { type: String, required: true },
+  type: { type: String, enum: ['Bungalow', 'Row House', 'Mixed'], default: 'Mixed' },
+  status: { type: String, enum: ['Ongoing', 'Upcoming', 'Completed'], default: 'Upcoming' },
+  image: String,
+  totalUnits: Number,
+  availableUnits: Number,
+  soldUnits: Number,
+  priceRange: String,
+  currentPrice: String,
+  futurePrice: String,
+  amenities: [String],
+  reraNumber: String,
+  legalDocuments: [String],
+  startDate: String,
+  completionDate: String,
+  pricePerSqft: String,
+  developmentStage: String,
+  planningPictures: [String],
+  layoutImages: [String],
+  beforeDevelopmentImages: [String],
+  currentSiteImages: [String],
+  completionRenderImages: [String],
+  insideViewImages: [String],
+  outsideViewImages: [String],
+  totalArea: String,
+  noOfFloors: Number,
+  noOfBedrooms: String,
+  noOfBathrooms: String,
+  balconyArea: String,
+  carpetArea: String,
+  builtUpArea: String,
+  createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('Project', projectSchema);
