@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FaPhone, FaEnvelope, FaWhatsapp, FaBars, FaTimes } from 'react-icons/fa';
+import { FaWhatsapp, FaBars, FaTimes } from 'react-icons/fa';
 import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
