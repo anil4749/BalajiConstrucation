@@ -21,7 +21,7 @@ const corsOriginMatcher = (origin, callback) => {
     BASE_CORS_ORIGIN,
     'http://localhost:3000',
     'http://localhost:3001',
-    /^https:\/\/balaji-construcation.*\.vercel\.app$/,  // Matches all Vercel preview URLs
+    /^https:\/\/balaji-construction.*\.vercel\.app$/,  // Matches all Vercel preview URLs (corrected spelling)
   ];
 
   // Allow requests with no origin (like mobile apps or curl requests)
