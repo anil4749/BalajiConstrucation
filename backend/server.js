@@ -12,29 +12,65 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const MONGODB_URI = process.env.MONGODB_URI;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:3000';
+const BASE_CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:3000';
 const API_URL = process.env.API_URL || `http://localhost:${PORT}`;
+
+// CORS origin matcher - accepts main domain and all Vercel preview URLs
+const corsOriginMatcher = (origin, callback) => {
+  const allowedOrigins = [
+    BASE_CORS_ORIGIN,
+    'http://localhost:3000',
+    'http://localhost:3001',
+    /^https:\/\/balaji-construcation.*\.vercel\.app$/,  // Matches all Vercel preview URLs
+  ];
+
+  // Allow requests with no origin (like mobile apps or curl requests)
+  if (!origin || origin === 'undefined') {
+    return callback(null, true);
+  }
+
+  const isAllowed = allowedOrigins.some(allowed => {
+    if (typeof allowed === 'string') {
+      return allowed === origin;
+    }
+    if (allowed instanceof RegExp) {
+      return allowed.test(origin);
+    }
+    return false;
+  });
+
+  if (isAllowed) {
+    callback(null, true);
+  } else {
+    console.warn(`❌ CORS blocked origin: ${origin}`);
+    callback(new Error('CORS not allowed'));
+  }
+};
 
 // Log configuration (without sensitive data)
 console.log('='.repeat(50));
 console.log('🚀 Server Configuration:');
 console.log(`   Environment: ${NODE_ENV}`);
 console.log(`   Port: ${PORT}`);
-console.log(`   CORS Origin: ${CORS_ORIGIN}`);
+console.log(`   CORS Origin: ${BASE_CORS_ORIGIN}`);
 console.log(`   API URL: ${API_URL}`);
 console.log(`   MongoDB: ${MONGODB_URI ? '✓ Connected' : '❌ Not configured'}`);
 console.log('='.repeat(50));
 
 // CORS configuration
 const corsOptions = {
-  origin: CORS_ORIGIN,
+  origin: corsOriginMatcher,
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  exposedHeaders: ['Content-Length', 'X-JSON-Response-Length'],
+  maxAge: 86400
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight requests
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // MongoDB Connection (optional - will use sample data if not available)
 if (MONGODB_URI) {
