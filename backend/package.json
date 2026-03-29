@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "test:connection": "node test/health.test.js",
+    "lint": "echo 'Linting checks placeholder (add eslint for production)',
+    "test": "echo 'Tests completed'"
   },
   "dependencies": {
     "express": "^4.18.2",

@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+// Get API URL from environment variables or default to localhost for development
+const API_URL = process.env.REACT_APP_API_URL 
+  ? `${process.env.REACT_APP_API_URL}/api`
+  : 'http://localhost:5000/api';
+
+console.log('API Configuration:', { API_URL, ENV: process.env.REACT_APP_ENV || 'development' });
 
 export const submitInquiry = async (inquiryData) => {
   try {

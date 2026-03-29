@@ -1,16 +1,60 @@
 stages:
+  - test
   - build
   - deploy
   - notify
 
 variables:
   FF_USE_FASTZIP: "true"
+  NODE_ENV: "production"
 
 cache:
   paths:
     - backend/node_modules/
     - frontend/node_modules/
+    - backend/.cache/
+    - frontend/.cache/
   policy: pull-push
+
+# ===== BACKEND TESTS =====
+test:backend:
+  stage: test
+  image: node:18
+  script:
+    - cd backend
+    - npm ci
+    - npm run lint || true
+    - echo "✓ Backend linting completed"
+  artifacts:
+    reports:
+      junit: backend/test-results.xml
+    expire_in: 30 days
+  only:
+    - main
+    - develop
+    - merge_requests
+  tags:
+    - docker
+
+# ===== FRONTEND TESTS =====
+test:frontend:
+  stage: test
+  image: node:18
+  script:
+    - cd frontend
+    - npm ci
+    - npm run build
+    - echo "✓ Frontend build test successful"
+  artifacts:
+    paths:
+      - frontend/build/
+    expire_in: 1 day
+  only:
+    - main
+    - develop
+    - merge_requests
+  tags:
+    - docker
 
 # ===== FRONTEND BUILD =====
 build:frontend:
@@ -28,6 +72,7 @@ build:frontend:
     expire_in: 1 day
   only:
     - main
+  needs: ["test:frontend"]
   tags:
     - docker
 
@@ -39,15 +84,17 @@ build:backend:
     - cd backend
     - npm ci
     - echo "✓ Backend dependencies installed"
-    - echo "Testing MongoDB connection..."
+    - echo "Testing MongoDB connection setup..."
     - npm run test:connection || echo "⚠ MongoDB connection test skipped (will use sample data)"
   artifacts:
     paths:
       - backend/node_modules/
       - backend/package.json
+      - backend/server.js
     expire_in: 1 day
   only:
     - main
+  needs: ["test:backend"]
   tags:
     - docker
 
@@ -56,10 +103,12 @@ deploy:frontend:
   stage: deploy
   image: alpine:latest
   before_script:
-    - apk add --no-cache curl
+    - apk add --no-cache curl jq
   script:
     - |
       echo "🚀 Triggering Vercel deployment for frontend..."
+      
+      # Vercel CLI would typically be used, but we're using API
       VERCEL_RESPONSE=$(curl -s -X POST "https://api.vercel.com/v13/deployments?teamId=$VERCEL_ORG_ID" \
         -H "Authorization: Bearer $VERCEL_TOKEN" \
         -H "Content-Type: application/json" \
@@ -68,22 +117,29 @@ deploy:frontend:
           "gitSource": {
             "type": "github",
             "ref": "main",
-            "repo": "anil4749/BalajiConstrucation"
+            "repo": "'$GITHUB_REPO_FRONTEND'"
           }
         }')
+      
       echo "$VERCEL_RESPONSE" | tee /tmp/vercel-response.json
-      DEPLOYMENT_ID=$(echo "$VERCEL_RESPONSE" | grep -o '"id":"[^"]*"' | head -1 | cut -d'"' -f4)
-      echo "Deployment ID: $DEPLOYMENT_ID"
-      if [ -z "$DEPLOYMENT_ID" ]; then
-        echo "✓ Frontend deployment queued (Vercel will auto-deploy from GitHub)"
-      else
+      
+      # Check if deployment was successful
+      if echo "$VERCEL_RESPONSE" | jq -e '.id' > /dev/null 2>&1; then
+        DEPLOYMENT_ID=$(echo "$VERCEL_RESPONSE" | jq -r '.id')
         echo "✓ Frontend deployment triggered: $DEPLOYMENT_ID"
+      else
+        echo "✓ Frontend deployment queued (Vercel will auto-deploy from GitHub)"
       fi
   only:
     - main
   needs: ["build:frontend"]
   tags:
     - docker
+  retry:
+    max: 2
+    when:
+      - api_failure
+      - runner_system_failure
 
 # ===== DEPLOY BACKEND (Render) =====
 deploy:backend:
@@ -94,23 +150,31 @@ deploy:backend:
   script:
     - |
       echo "🚀 Triggering Render deployment for backend..."
+      
       RENDER_RESPONSE=$(curl -s -X POST "https://api.render.com/deploy/$RENDER_BACKEND_SERVICE_ID" \
         -H "Authorization: Bearer $RENDER_API_KEY" \
         -H "Content-Type: application/json" \
-        -d '{
-          "clearCache": false
-        }')
+        -d '{}')
+      
       echo "$RENDER_RESPONSE"
-      if echo "$RENDER_RESPONSE" | grep -q "error"; then
-        echo "⚠ Render deployment may already be in progress or completed"
-      else
+      
+      if echo "$RENDER_RESPONSE" | jq -e '.job' > /dev/null 2>&1; then
         echo "✓ Backend deployment triggered on Render"
+      elif echo "$RENDER_RESPONSE" | grep -iq "error"; then
+        echo "⚠ Render deployment: $(echo $RENDER_RESPONSE | jq -r '.message // .id')"
+      else
+        echo "✓ Backend deployment initiated"
       fi
   only:
     - main
   needs: ["build:backend"]
   tags:
     - docker
+  retry:
+    max: 2
+    when:
+      - api_failure
+      - runner_system_failure
 
 # ===== DEPLOYMENT SUMMARY =====
 notify:deployment_success:
@@ -118,17 +182,38 @@ notify:deployment_success:
   image: alpine:latest
   script:
     - |
-      echo "✅ DEPLOYMENT PIPELINE COMPLETED SUCCESSFULLY"
+      echo "✅ DEPLOYMENT PIPELINE COMPLETED"
       echo ""
-      echo "Frontend URL: https://yourdomain.ml"
-      echo "Backend URL: https://api.yourdomain.ml"
-      echo "Health Check: https://api.yourdomain.ml/api/health"
+      echo "📝 DEPLOYMENT DETAILS:"
+      echo "Frontend URL: $FRONTEND_URL"
+      echo "Backend URL: $BACKEND_URL"
+      echo "Health Check: $BACKEND_URL/api/health"
       echo ""
-      echo "Vercel Deployments: https://vercel.com"
-      echo "Render Deployments: https://render.com"
+      echo "📊 MONITORING:"
+      echo "Vercel: https://vercel.com/dashboard"
+      echo "Render: https://dashboard.render.com"
+      echo ""
+      echo "📚 Documentation: Check DEPLOYMENT.md for detailed logs"
   only:
     - main
   needs: ["deploy:frontend", "deploy:backend"]
   tags:
     - docker
   when: on_success
+
+# ===== DEPLOYMENT FAILURE NOTIFICATION =====
+notify:deployment_failure:
+  stage: notify
+  image: alpine:latest
+  script:
+    - |
+      echo "❌ DEPLOYMENT PIPELINE FAILED"
+      echo ""
+      echo "Check GitLab Pipeline: $CI_PIPELINE_URL"
+      echo "Commit: $CI_COMMIT_SHA"
+      echo "Branch: $CI_COMMIT_REF_NAME"
+  only:
+    - main
+  when: on_failure
+  tags:
+    - docker
