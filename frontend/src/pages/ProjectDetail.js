@@ -71,25 +71,25 @@ export default function ProjectDetail() {
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-gray-900 text-white py-8 sm:py-10 md:py-12">
+      <section className="bg-gray-900 text-white py-6 sm:py-8 md:py-12">
         <div className="max-w-6xl mx-auto px-3 sm:px-4">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+          <div className="flex flex-col gap-4 sm:gap-6">
             <div className="flex-1">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">{project.title}</h1>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-                <span className={`px-3 sm:px-4 py-1 sm:py-2 rounded-full font-semibold text-xs sm:text-sm w-fit ${getStatusColor(project.status)}`}>
+              <h1 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 sm:mb-3">{project.title}</h1>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                <span className={`px-3 sm:px-4 py-1 sm:py-2 rounded-full font-semibold text-xs w-fit ${getStatusColor(project.status)}`}>
                   {project.status}
                 </span>
-                <div className="flex items-center text-sm sm:text-base text-gray-300">
+                <div className="flex items-center text-xs sm:text-sm md:text-base text-gray-300">
                   <FaMapMarkerAlt className="mr-2 flex-shrink-0" />
                   <span>{project.location}</span>
                 </div>
               </div>
             </div>
             {project.reraNumber && (
-              <div className="text-left sm:text-right">
-                <p className="text-xs sm:text-sm text-gray-400 mb-1">RERA Number</p>
-                <p className="text-base sm:text-lg font-bold">{project.reraNumber}</p>
+              <div className="text-left">
+                <p className="text-xs text-gray-400 mb-1">RERA Number</p>
+                <p className="text-sm sm:text-base font-bold">{project.reraNumber}</p>
               </div>
             )}
           </div>
@@ -112,9 +112,9 @@ export default function ProjectDetail() {
           </div>
 
           {/* Image Gallery Tabs */}
-          <div className="p-4 sm:p-6 border-t border-gray-200">
-            <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3 sm:mb-4">Project Gallery</h3>
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
+          <div className="p-3 sm:p-4 md:p-6 border-t border-gray-200">
+            <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-800 mb-2 sm:mb-4">Project Gallery</h3>
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
               {/* Main image */}
               <button
                 onClick={() => setSelectedImage(project.image)}
@@ -211,7 +211,7 @@ export default function ProjectDetail() {
         </div>
 
         {/* Tabs Navigation */}
-        <div className="flex space-x-4 mb-8 border-b border-gray-200">
+        <div className="flex overflow-x-auto space-x-2 sm:space-x-4 mb-6 sm:mb-8 border-b border-gray-200 -mx-3 sm:mx-0 px-3 sm:px-0">
           {['overview', 'specifications', 'timeline', 'pricing', 'amenities', 'documents'].map(tab => {
             const tabLabels = {
               'overview': t('projectDetail.tabOverview'),
@@ -225,7 +225,7 @@ export default function ProjectDetail() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 font-semibold transition ${
+                className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-xs sm:text-sm md:text-base font-semibold whitespace-nowrap transition ${
                   activeTab === tab
                     ? 'text-amber-600 border-b-2 border-amber-600'
                     : 'text-gray-600 hover:text-gray-800'
@@ -239,40 +239,40 @@ export default function ProjectDetail() {
 
         {/* Overview Tab */}
         {activeTab === 'overview' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Project Overview</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">{project.description}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
+            <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">Project Overview</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">{project.description}</p>
               
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <span className="font-semibold text-gray-700 w-40">Project Type:</span>
-                  <span className="text-gray-600">{project.type}</span>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">Project Type:</span>
+                  <span className="text-xs sm:text-sm text-gray-600">{project.type}</span>
                 </div>
-                <div className="flex items-center">
-                  <span className="font-semibold text-gray-700 w-40">Total Units:</span>
-                  <span className="text-gray-600">{project.totalUnits}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">Total Units:</span>
+                  <span className="text-xs sm:text-sm text-gray-600">{project.totalUnits}</span>
                 </div>
-                <div className="flex items-center">
-                  <span className="font-semibold text-gray-700 w-40">Available Units:</span>
-                  <span className="text-green-600 font-bold">{project.availableUnits}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">Available Units:</span>
+                  <span className="text-xs sm:text-sm text-green-600 font-bold">{project.availableUnits}</span>
                 </div>
-                <div className="flex items-center">
-                  <span className="font-semibold text-gray-700 w-40">Sold Units:</span>
-                  <span className="text-amber-600 font-bold">{project.soldUnits || 0}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">Sold Units:</span>
+                  <span className="text-xs sm:text-sm text-amber-600 font-bold">{project.soldUnits || 0}</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Key Highlights</h3>
+            <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">Key Highlights</h3>
               {project.amenities && project.amenities.length > 0 && (
-                <div className="mb-6">
-                  <h4 className="font-semibold text-gray-800 mb-3">Amenities</h4>
-                  <div className="grid grid-cols-2 gap-2">
+                <div className="mb-4 sm:mb-6">
+                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-2 sm:mb-3">Amenities</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {project.amenities.map((amenity, i) => (
-                      <div key={i} className="flex items-center text-gray-600">
-                        <FaCheckCircle className="text-green-500 mr-2" />
+                      <div key={i} className="flex items-center text-xs sm:text-sm text-gray-600">
+                        <FaCheckCircle className="text-green-500 mr-2 flex-shrink-0" />
                         <span>{amenity}</span>
                       </div>
                     ))}
@@ -285,79 +285,79 @@ export default function ProjectDetail() {
 
         {/* Specifications Tab */}
         {activeTab === 'specifications' && (
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Project Specifications</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8 mb-8 sm:mb-12">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Project Specifications</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               <div>
-                <h4 className="font-semibold text-gray-800 mb-4 flex items-center">
+                <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3 sm:mb-4 flex items-center">
                   <FaRuler className="mr-2 text-amber-600" />
                   Area Details
                 </h4>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {project.totalArea && (
                     <div>
-                      <p className="text-gray-600 text-sm">Total Area</p>
-                      <p className="text-lg font-semibold text-gray-800">{project.totalArea}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Total Area</p>
+                      <p className="text-sm sm:text-base font-semibold text-gray-800">{project.totalArea}</p>
                     </div>
                   )}
                   {project.carpetArea && (
                     <div>
-                      <p className="text-gray-600 text-sm">Carpet Area</p>
-                      <p className="text-lg font-semibold text-gray-800">{project.carpetArea}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Carpet Area</p>
+                      <p className="text-sm sm:text-base font-semibold text-gray-800">{project.carpetArea}</p>
                     </div>
                   )}
                   {project.builtUpArea && (
                     <div>
-                      <p className="text-gray-600 text-sm">Built-up Area</p>
-                      <p className="text-lg font-semibold text-gray-800">{project.builtUpArea}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Built-up Area</p>
+                      <p className="text-sm sm:text-base font-semibold text-gray-800">{project.builtUpArea}</p>
                     </div>
                   )}
                   {project.balconyArea && (
                     <div>
-                      <p className="text-gray-600 text-sm">Balcony Area</p>
-                      <p className="text-lg font-semibold text-gray-800">{project.balconyArea}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Balcony Area</p>
+                      <p className="text-sm sm:text-base font-semibold text-gray-800">{project.balconyArea}</p>
                     </div>
                   )}
                 </div>
               </div>
 
               <div>
-                <h4 className="font-semibold text-gray-800 mb-4">Unit Details</h4>
-                <div className="space-y-3">
+                <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3 sm:mb-4">Unit Details</h4>
+                <div className="space-y-2 sm:space-y-3">
                   {project.noOfFloors && (
                     <div>
-                      <p className="text-gray-600 text-sm">Number of Floors</p>
-                      <p className="text-lg font-semibold text-gray-800">{project.noOfFloors}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Number of Floors</p>
+                      <p className="text-sm sm:text-base font-semibold text-gray-800">{project.noOfFloors}</p>
                     </div>
                   )}
                   {project.noOfBedrooms && (
                     <div>
-                      <p className="text-gray-600 text-sm">Bedrooms</p>
-                      <p className="text-lg font-semibold text-gray-800">{project.noOfBedrooms}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Bedrooms</p>
+                      <p className="text-sm sm:text-base font-semibold text-gray-800">{project.noOfBedrooms}</p>
                     </div>
                   )}
                   {project.noOfBathrooms && (
                     <div>
-                      <p className="text-gray-600 text-sm">Bathrooms</p>
-                      <p className="text-lg font-semibold text-gray-800">{project.noOfBathrooms}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Bathrooms</p>
+                      <p className="text-sm sm:text-base font-semibold text-gray-800">{project.noOfBathrooms}</p>
                     </div>
                   )}
                 </div>
               </div>
 
               <div>
-                <h4 className="font-semibold text-gray-800 mb-4">Price Details</h4>
-                <div className="space-y-3">
+                <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3 sm:mb-4">Price Details</h4>
+                <div className="space-y-2 sm:space-y-3">
                   {project.pricePerSqft && (
                     <div>
-                      <p className="text-gray-600 text-sm">Price per Sq.ft</p>
-                      <p className="text-lg font-semibold text-gray-800">{project.pricePerSqft}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Price per Sq.ft</p>
+                      <p className="text-sm sm:text-base font-semibold text-gray-800">{project.pricePerSqft}</p>
                     </div>
                   )}
                   {project.currentPrice && (
                     <div>
-                      <p className="text-gray-600 text-sm">Current Price Range</p>
-                      <p className="text-lg font-semibold text-amber-600">{project.currentPrice}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Current Price Range</p>
+                      <p className="text-sm sm:text-base font-semibold text-amber-600">{project.currentPrice}</p>
                     </div>
                   )}
                 </div>
@@ -368,25 +368,25 @@ export default function ProjectDetail() {
 
         {/* Timeline Tab */}
         {activeTab === 'timeline' && (
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Project Timeline</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8 mb-8 sm:mb-12">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Project Timeline</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {project.startDate && (
-                <div className="border-l-4 border-amber-600 pl-4">
-                  <p className="text-gray-600 text-sm mb-1">Project Started</p>
-                  <p className="text-xl font-bold text-gray-800">{project.startDate}</p>
+                <div className="border-l-4 border-amber-600 pl-3 sm:pl-4">
+                  <p className="text-gray-600 text-xs sm:text-sm mb-1">Project Started</p>
+                  <p className="text-base sm:text-lg md:text-xl font-bold text-gray-800">{project.startDate}</p>
                 </div>
               )}
               {project.developmentStage && (
-                <div className="border-l-4 border-blue-600 pl-4">
-                  <p className="text-gray-600 text-sm mb-1">Current Progress</p>
-                  <p className="text-xl font-bold text-gray-800">{project.developmentStage}</p>
+                <div className="border-l-4 border-blue-600 pl-3 sm:pl-4">
+                  <p className="text-gray-600 text-xs sm:text-sm mb-1">Current Progress</p>
+                  <p className="text-base sm:text-lg md:text-xl font-bold text-gray-800">{project.developmentStage}</p>
                 </div>
               )}
               {project.completionDate && (
-                <div className="border-l-4 border-green-600 pl-4">
-                  <p className="text-gray-600 text-sm mb-1">Expected Completion</p>
-                  <p className="text-xl font-bold text-gray-800">{project.completionDate}</p>
+                <div className="border-l-4 border-green-600 pl-3 sm:pl-4">
+                  <p className="text-gray-600 text-xs sm:text-sm mb-1">Expected Completion</p>
+                  <p className="text-base sm:text-lg md:text-xl font-bold text-gray-800">{project.completionDate}</p>
                 </div>
               )}
             </div>
@@ -395,43 +395,43 @@ export default function ProjectDetail() {
 
         {/* Pricing Tab */}
         {activeTab === 'pricing' && (
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Price Information</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="border-2 border-amber-200 rounded-lg p-6 bg-amber-50">
-                <h4 className="font-bold text-amber-900 mb-4">Current Pricing</h4>
-                <div className="space-y-3">
+          <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8 mb-8 sm:mb-12">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Price Information</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-8">
+              <div className="border-2 border-amber-200 rounded-lg p-3 sm:p-4 md:p-6 bg-amber-50">
+                <h4 className="text-sm sm:text-base font-bold text-amber-900 mb-3 sm:mb-4">Current Pricing</h4>
+                <div className="space-y-2 sm:space-y-3">
                   <div>
-                    <p className="text-gray-600 text-sm">Price Range</p>
-                    <p className="text-2xl font-bold text-amber-600">{project.priceRange}</p>
+                    <p className="text-gray-600 text-xs sm:text-sm">Price Range</p>
+                    <p className="text-lg sm:text-xl md:text-2xl font-bold text-amber-600">{project.priceRange}</p>
                   </div>
                   {project.currentPrice && (
                     <div>
-                      <p className="text-gray-600 text-sm">Current Price</p>
-                      <p className="text-xl font-semibold text-amber-700">{project.currentPrice}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Current Price</p>
+                      <p className="text-base sm:text-lg md:text-xl font-semibold text-amber-700">{project.currentPrice}</p>
                     </div>
                   )}
                   {project.pricePerSqft && (
                     <div>
-                      <p className="text-gray-600 text-sm">Per Sq.ft</p>
-                      <p className="text-lg font-semibold text-amber-700">{project.pricePerSqft}</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">Per Sq.ft</p>
+                      <p className="text-sm sm:text-base md:text-lg font-semibold text-amber-700">{project.pricePerSqft}</p>
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="border-2 border-green-200 rounded-lg p-6 bg-green-50">
-                <h4 className="font-bold text-green-900 mb-4">Future Pricing</h4>
+              <div className="border-2 border-green-200 rounded-lg p-3 sm:p-4 md:p-6 bg-green-50">
+                <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 sm:mb-4">Future Pricing</h4>
                 {project.futurePrice ? (
                   <div>
-                    <p className="text-gray-600 text-sm mb-2">Expected Future Price</p>
-                    <p className="text-2xl font-bold text-green-600">{project.futurePrice}</p>
-                    <p className="text-sm text-green-700 mt-4">
+                    <p className="text-gray-600 text-xs sm:text-sm mb-2">Expected Future Price</p>
+                    <p className="text-lg sm:text-xl md:text-2xl font-bold text-green-600">{project.futurePrice}</p>
+                    <p className="text-xs sm:text-sm text-green-700 mt-3 sm:mt-4">
                       Prices subject to change based on project progress and market conditions
                     </p>
                   </div>
                 ) : (
-                  <p className="text-gray-600">Future pricing details coming soon</p>
+                  <p className="text-xs sm:text-sm text-gray-600">Future pricing details coming soon</p>
                 )}
               </div>
             </div>
@@ -440,42 +440,42 @@ export default function ProjectDetail() {
 
         {/* Amenities Tab */}
         {activeTab === 'amenities' && (
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Amenities & Features</h3>
+          <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8 mb-8 sm:mb-12">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Amenities & Features</h3>
             {project.amenities && project.amenities.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
                 {project.amenities.map((amenity, i) => (
-                  <div key={i} className="flex items-center p-4 bg-gray-50 rounded-lg">
-                    <FaCheckCircle className="text-green-500 mr-3 text-xl" />
-                    <span className="text-gray-700 font-semibold">{amenity}</span>
+                  <div key={i} className="flex items-center p-2 sm:p-3 md:p-4 bg-gray-50 rounded-lg">
+                    <FaCheckCircle className="text-green-500 mr-2 sm:mr-3 text-sm sm:text-lg flex-shrink-0" />
+                    <span className="text-xs sm:text-sm md:text-base text-gray-700 font-semibold">{amenity}</span>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-gray-600">Amenities details coming soon</p>
+              <p className="text-xs sm:text-sm text-gray-600">Amenities details coming soon</p>
             )}
           </div>
         )}
 
         {/* Documents Tab */}
         {activeTab === 'documents' && (
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Legal Documents</h3>
-            <div className="space-y-4">
+          <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8 mb-8 sm:mb-12">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Legal Documents</h3>
+            <div className="space-y-3 sm:space-y-4">
               {project.reraNumber && (
-                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                  <p className="text-gray-600 text-sm mb-1">RERA Registration Number</p>
-                  <p className="text-lg font-bold text-blue-800">{project.reraNumber}</p>
+                <div className="p-2 sm:p-3 md:p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-gray-600 text-xs sm:text-sm mb-1">RERA Registration Number</p>
+                  <p className="text-sm sm:text-base md:text-lg font-bold text-blue-800">{project.reraNumber}</p>
                 </div>
               )}
               {project.legalDocuments && project.legalDocuments.length > 0 ? (
                 <div>
-                  <h4 className="font-semibold text-gray-800 mb-3">Available Documents</h4>
+                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-2 sm:mb-3">Available Documents</h4>
                   <div className="space-y-2">
                     {project.legalDocuments.map((doc, i) => (
-                      <div key={i} className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
-                        <FaDownload className="text-amber-600 mr-3" />
-                        <a href={doc} target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:text-amber-700 font-semibold flex-1">
+                      <div key={i} className="flex items-center p-2 sm:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                        <FaDownload className="text-amber-600 mr-2 sm:mr-3 flex-shrink-0 text-sm sm:text-base" />
+                        <a href={doc} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm md:text-base text-amber-600 hover:text-amber-700 font-semibold flex-1">
                           Document {i + 1}
                         </a>
                       </div>
@@ -483,27 +483,27 @@ export default function ProjectDetail() {
                   </div>
                 </div>
               ) : (
-                <p className="text-gray-600">Legal documents will be available soon</p>
+                <p className="text-xs sm:text-sm text-gray-600">Legal documents will be available soon</p>
               )}
             </div>
           </div>
         )}
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-lg shadow-lg p-8 text-white mb-12">
-          <div className="flex justify-between items-center">
-            <div>
-              <h3 className="text-3xl font-bold mb-2">{t('projectDetail.interestedTitle')}</h3>
-              <p className="text-amber-100 text-lg">{t('projectDetail.interestedDesc')}</p>
+        <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-lg shadow-lg p-3 sm:p-4 md:p-8 text-white mb-8 sm:mb-12">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-6">
+            <div className="flex-1">
+              <h3 className="text-lg sm:text-xl md:text-3xl font-bold mb-1 sm:mb-2">{t('projectDetail.interestedTitle')}</h3>
+              <p className="text-amber-100 text-xs sm:text-sm md:text-lg">{t('projectDetail.interestedDesc')}</p>
             </div>
-            <div className="space-x-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
               <button 
                 onClick={() => navigate('/contact', { state: { projectId: project._id, projectTitle: project.title } })}
-                className="inline-block bg-white text-amber-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition"
+                className="inline-block bg-white text-amber-600 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg font-bold text-xs sm:text-sm md:text-lg hover:bg-gray-100 transition whitespace-nowrap"
               >
                 {t('projectDetail.inquireNow')}
               </button>
-              <a href="https://wa.me/919637279798" target="_blank" rel="noopener noreferrer" className="inline-block bg-green-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-600 transition">
+              <a href="https://wa.me/919637279798" target="_blank" rel="noopener noreferrer" className="inline-block bg-green-500 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg font-bold text-xs sm:text-sm md:text-lg hover:bg-green-600 transition whitespace-nowrap">
                 {t('inquiry.chatOnWhatsApp')}
               </a>
             </div>
