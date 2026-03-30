@@ -220,26 +220,28 @@ export default function InquiryForm({ projectData }) {
               </div>
 
               {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition text-sm sm:text-base"
-              >
-                {loading ? 'Sending...' : t('inquiry.sendInquiry')}
-              </button>
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition text-sm sm:text-base"
+                >
+                  {loading ? 'Sending...' : t('inquiry.sendInquiry')}
+                </button>
+              </div>
             </form>
 
             {/* Alternative Contact Methods */}
             <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
               <p className="text-center text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">{t('inquiry.contactDirectly')}</p>
-              <div className="space-y-3">
+              <div className="flex justify-center w-full">
                 <a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition text-sm sm:text-base"
+                  className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 sm:py-3 px-4 sm:px-8 rounded-lg transition text-xs sm:text-base whitespace-nowrap"
                 >
-                  <FaWhatsapp className="mr-2" /> {t('inquiry.chatOnWhatsApp')}
+                  <FaWhatsapp className="mr-2 flex-shrink-0" /> {t('inquiry.chatOnWhatsApp')}
                 </a>
               </div>
             </div>
