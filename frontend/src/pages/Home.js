@@ -37,11 +37,11 @@ export default function Home() {
       <VisionSection />
 
       {/* Featured Projects */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('projects.title')}</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+      <section className="py-8 sm:py-12 md:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">{t('projects.title')}</h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-2">
               {t('projects.subtitle')}
             </p>
           </div>
@@ -51,7 +51,7 @@ export default function Home() {
               <p className="text-gray-600">{t('common.loading')}</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {projects.length > 0 ? (
                 projects.map(project => (
                   <ProjectCard key={project._id} project={project} />

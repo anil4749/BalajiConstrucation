@@ -71,25 +71,25 @@ export default function ProjectDetail() {
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-gray-900 text-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex justify-between items-start">
-            <div>
-              <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-              <div className="flex items-center space-x-4">
-                <span className={`px-4 py-2 rounded-full font-semibold ${getStatusColor(project.status)}`}>
+      <section className="bg-gray-900 text-white py-8 sm:py-10 md:py-12">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+            <div className="flex-1">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">{project.title}</h1>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+                <span className={`px-3 sm:px-4 py-1 sm:py-2 rounded-full font-semibold text-xs sm:text-sm w-fit ${getStatusColor(project.status)}`}>
                   {project.status}
                 </span>
-                <div className="flex items-center text-gray-300">
-                  <FaMapMarkerAlt className="mr-2" />
+                <div className="flex items-center text-sm sm:text-base text-gray-300">
+                  <FaMapMarkerAlt className="mr-2 flex-shrink-0" />
                   <span>{project.location}</span>
                 </div>
               </div>
             </div>
             {project.reraNumber && (
-              <div className="text-right">
-                <p className="text-gray-400 text-sm mb-1">RERA Number</p>
-                <p className="text-lg font-bold">{project.reraNumber}</p>
+              <div className="text-left sm:text-right">
+                <p className="text-xs sm:text-sm text-gray-400 mb-1">RERA Number</p>
+                <p className="text-base sm:text-lg font-bold">{project.reraNumber}</p>
               </div>
             )}
           </div>
@@ -97,28 +97,28 @@ export default function ProjectDetail() {
       </section>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-8 md:py-12">
         {/* Gallery Section */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-6 sm:mb-8">
           <div className="aspect-video bg-gray-200 relative">
             <img 
               src={selectedImage || 'https://picsum.photos/1200/600?random=detail'} 
               alt={project.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+            <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-black/50 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
               Development: {project.developmentStage || 'N/A'}
             </div>
           </div>
 
           {/* Image Gallery Tabs */}
-          <div className="p-6 border-t border-gray-200">
-            <h3 className="text-lg font-bold text-gray-800 mb-4">Project Gallery</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="p-4 sm:p-6 border-t border-gray-200">
+            <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3 sm:mb-4">Project Gallery</h3>
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
               {/* Main image */}
               <button
                 onClick={() => setSelectedImage(project.image)}
-                className="aspect-square bg-gray-200 rounded-lg overflow-hidden hover:opacity-75 transition border-2 border-gray-300"
+                className="aspect-square bg-gray-200 rounded-lg overflow-hidden hover:opacity-75 transition border-2 border-gray-300 active:border-amber-500"
               >
                 <img src={project.image || 'https://picsum.photos/150/150?random=1'} alt="Main" className="w-full h-full object-cover" />
               </button>

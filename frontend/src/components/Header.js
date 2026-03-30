@@ -12,9 +12,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <h1 className="text-2xl md:text-3xl font-bold text-amber-700">Balaji Construction</h1>
+          <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-amber-700">Balaji Construction</h1>
         </Link>
         
         {/* Desktop Navigation */}
@@ -25,19 +25,19 @@ export default function Header() {
           <Link to="/contact" className="text-gray-700 hover:text-amber-700 font-semibold transition">{t('navigation.contact')}</Link>
         </nav>
 
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden sm:flex items-center space-x-2 sm:space-x-4">
           <LanguageSwitcher />
           <a 
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition flex items-center space-x-2"
+            className="bg-green-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-green-600 transition flex items-center space-x-2 text-sm sm:text-base"
           >
-            <FaWhatsapp /> <span>{t('common.chat')}</span>
+            <FaWhatsapp /> <span className="hidden sm:inline">{t('common.chat')}</span>
           </a>
           <Link 
             to="/contact"
-            className="bg-amber-700 text-white px-6 py-2 rounded-lg hover:bg-amber-800 transition"
+            className="bg-amber-700 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-amber-800 transition text-sm sm:text-base"
           >
             {t('contact.getInTouch')}
           </Link>
@@ -46,7 +46,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-gray-700 text-2xl"
+          className="sm:hidden text-gray-700 text-xl"
         >
           {mobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
@@ -54,8 +54,8 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <div className="px-4 py-4 space-y-4">
+        <div className="sm:hidden bg-white border-t border-gray-200">
+          <div className="px-3 py-3 space-y-3">
             <Link 
               to="/" 
               className="block text-gray-700 hover:text-amber-700 font-semibold"

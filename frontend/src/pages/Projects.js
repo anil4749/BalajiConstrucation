@@ -48,27 +48,27 @@ export default function Projects() {
       <Header />
 
       {/* Hero */}
-      <section className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">{t('projects.title')}</h1>
-          <p className="text-lg text-gray-300">
+      <section className="bg-gray-900 text-white py-8 sm:py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">{t('projects.title')}</h1>
+          <p className="text-sm sm:text-base md:text-lg text-gray-300">
             {t('projects.subtitle')}
           </p>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="py-8 sm:py-12 md:py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
           {/* Filters */}
-          <div className="mb-12">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">{t('projects.category')}</h3>
-            <div className="flex flex-wrap gap-4">
+          <div className="mb-8 sm:mb-12">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">{t('projects.category')}</h3>
+            <div className="flex flex-wrap gap-2 sm:gap-4">
               {statuses.map(status => (
                 <button
                   key={status.key}
                   onClick={() => setStatusFilter(status.value)}
-                  className={`px-6 py-2 rounded-lg font-semibold transition ${
+                  className={`px-4 sm:px-6 py-2 rounded-lg font-semibold transition text-sm sm:text-base ${
                     statusFilter === status.value
                       ? 'bg-amber-600 text-white'
                       : 'bg-white text-gray-800 border border-gray-300 hover:border-amber-600'

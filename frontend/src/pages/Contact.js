@@ -15,10 +15,10 @@ export default function Contact() {
       <Header />
 
       {/* Hero */}
-      <section className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">{t('contact.title')}</h1>
-          <p className="text-lg text-gray-300">
+      <section className="bg-gray-900 text-white py-8 sm:py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">{t('contact.title')}</h1>
+          <p className="text-sm sm:text-base md:text-lg text-gray-300">
             {t('contact.form')}
           </p>
         </div>

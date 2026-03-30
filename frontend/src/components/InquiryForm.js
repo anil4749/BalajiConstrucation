@@ -141,38 +141,38 @@ export default function InquiryForm({ projectData }) {
   // Project Inquiry Form - Simplified
   if (isProjectInquiry) {
     return (
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-2xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('inquiry.inquiryFor')} {projectData.projectTitle}</h2>
-            <p className="text-lg text-gray-600">
+      <section className="py-8 sm:py-12 md:py-16 bg-gray-50">
+        <div className="max-w-2xl mx-auto px-3 sm:px-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">{t('inquiry.inquiryFor')} {projectData.projectTitle}</h2>
+            <p className="text-xs sm:text-sm md:text-lg text-gray-600">
               {t('inquiry.projectInquiryDesc')}
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-lg shadow-lg">
+          <div className="bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg">
             {submitted && (
-              <div className="mb-4 p-4 bg-green-100 text-green-700 rounded-lg">
+              <div className="mb-4 p-3 sm:p-4 bg-green-100 text-green-700 rounded-lg text-xs sm:text-sm">
                 Thank you! Your inquiry has been submitted successfully. We'll contact you soon.
               </div>
             )}
 
             {errors.submit && (
-              <div className="mb-4 p-4 bg-red-100 text-red-700 rounded-lg">
+              <div className="mb-4 p-3 sm:p-4 bg-red-100 text-red-700 rounded-lg text-xs sm:text-sm">
                 {errors.submit}
               </div>
             )}
 
             {/* Project Info Display */}
-            <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-              <p className="text-sm text-gray-600 mb-1">Project</p>
-              <p className="text-lg font-bold text-amber-900">{projectData.projectTitle}</p>
+            <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-amber-50 border border-amber-200 rounded-lg">
+              <p className="text-xs sm:text-sm text-gray-600 mb-1">Project</p>
+              <p className="text-base sm:text-lg font-bold text-amber-900">{projectData.projectTitle}</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Email Field */}
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-xs sm:text-sm text-gray-700 font-semibold mb-1 sm:mb-2">
                   {t('contact.email')} <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -180,7 +180,7 @@ export default function InquiryForm({ projectData }) {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none ${
+                  className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:outline-none text-sm ${
                     errors.email 
                       ? 'border-red-500 focus:border-red-600' 
                       : 'border-gray-300 focus:border-amber-600'
@@ -188,23 +188,23 @@ export default function InquiryForm({ projectData }) {
                   placeholder="your@email.com"
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                  <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.email}</p>
                 )}
               </div>
 
               {/* Phone Field */}
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-xs sm:text-sm text-gray-700 font-semibold mb-1 sm:mb-2">
                   {t('contact.phone')} <span className="text-red-500">*</span>
                 </label>
                 <div className="flex">
-                  <span className="px-4 py-3 bg-gray-200 border border-gray-300 rounded-l-lg font-semibold text-gray-700">+91</span>
+                  <span className="px-2 sm:px-4 py-2 sm:py-3 bg-gray-200 border border-gray-300 rounded-l-lg font-semibold text-gray-700 text-xs sm:text-sm">+91</span>
                   <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`flex-1 px-4 py-3 border border-l-0 rounded-r-lg focus:outline-none ${
+                    className={`flex-1 px-3 sm:px-4 py-2 sm:py-3 border border-l-0 rounded-r-lg focus:outline-none text-sm ${
                       errors.phone 
                         ? 'border-red-500 focus:border-red-600' 
                         : 'border-gray-300 focus:border-amber-600'
@@ -214,7 +214,7 @@ export default function InquiryForm({ projectData }) {
                   />
                 </div>
                 {errors.phone && (
-                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                  <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.phone}</p>
                 )}
                 <p className="text-gray-500 text-xs mt-1">Enter a 10-digit mobile number</p>
               </div>
@@ -223,21 +223,21 @@ export default function InquiryForm({ projectData }) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400 text-white font-bold py-3 px-4 rounded-lg transition"
+                className="w-full bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition text-sm sm:text-base"
               >
                 {loading ? 'Sending...' : t('inquiry.sendInquiry')}
               </button>
             </form>
 
             {/* Alternative Contact Methods */}
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              <p className="text-center text-gray-600 mb-4">{t('inquiry.contactDirectly')}</p>
+            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
+              <p className="text-center text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">{t('inquiry.contactDirectly')}</p>
               <div className="space-y-3">
                 <a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg transition"
+                  className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition text-sm sm:text-base"
                 >
                   <FaWhatsapp className="mr-2" /> {t('inquiry.chatOnWhatsApp')}
                 </a>
@@ -251,33 +251,33 @@ export default function InquiryForm({ projectData }) {
 
   // Standard Contact Form
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('inquiry.submitInquiry')}</h2>
-          <p className="text-lg text-gray-600">
+    <section className="py-8 sm:py-12 md:py-16 bg-gray-50">
+      <div className="max-w-4xl mx-auto px-3 sm:px-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">{t('inquiry.submitInquiry')}</h2>
+          <p className="text-xs sm:text-sm md:text-lg text-gray-600">
             {t('contact.form')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-9 md:gap-12">
           {/* Form */}
-          <div className="bg-white p-8 rounded-lg shadow-lg">
+          <div className="bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg">
             {submitted && (
-              <div className="mb-4 p-4 bg-green-100 text-green-700 rounded-lg">
+              <div className="mb-4 p-3 sm:p-4 bg-green-100 text-green-700 rounded-lg text-xs sm:text-sm">
                 {t('inquiry.inquirySuccess')}
               </div>
             )}
 
             {errors.submit && (
-              <div className="mb-4 p-4 bg-red-100 text-red-700 rounded-lg">
+              <div className="mb-4 p-3 sm:p-4 bg-red-100 text-red-700 rounded-lg text-xs sm:text-sm">
                 {errors.submit}
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-xs sm:text-sm text-gray-700 font-semibold mb-1 sm:mb-2">
                   {t('contact.name')} <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -285,7 +285,7 @@ export default function InquiryForm({ projectData }) {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none ${
+                  className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:outline-none text-sm ${
                     errors.name 
                       ? 'border-red-500 focus:border-red-600' 
                       : 'border-gray-300 focus:border-amber-600'
@@ -293,7 +293,7 @@ export default function InquiryForm({ projectData }) {
                   placeholder={t('contact.name')}
                 />
                 {errors.name && (
-                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                  <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.name}</p>
                 )}
               </div>
 
@@ -394,24 +394,24 @@ export default function InquiryForm({ projectData }) {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">{t('contact.message')} <span className="text-gray-500 text-sm">(Optional)</span></label>
+                <label className="block text-xs sm:text-sm text-gray-700 font-semibold mb-1 sm:mb-2">{t('contact.message')} <span className="text-gray-500 text-xs">(Optional)</span></label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="4"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-600"
+                  rows="3"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-600 text-sm"
                   placeholder={t('inquiry.submitInquiry')}
                 ></textarea>
               </div>
 
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">Preferred Contact Method</label>
+                <label className="block text-xs sm:text-sm text-gray-700 font-semibold mb-1 sm:mb-2">Preferred Contact Method</label>
                 <select
                   name="preferredContact"
                   value={formData.preferredContact}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-600"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-600 text-sm"
                 >
                   <option value="email">{t('contact.email')}</option>
                   <option value="phone">{t('contact.phone')}</option>
@@ -422,7 +422,7 @@ export default function InquiryForm({ projectData }) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400 text-white font-bold py-3 px-4 rounded-lg transition"
+                className="w-full bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition text-sm sm:text-base"
               >
                 {loading ? t('contact.sending') : t('inquiry.submit')}
               </button>
@@ -430,36 +430,36 @@ export default function InquiryForm({ projectData }) {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">{t('contact.getInTouch')}</h3>
+          <div className="space-y-6 sm:space-y-8">
+            <div className="bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">{t('contact.getInTouch')}</h3>
               
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <FaPhone className="text-amber-600 text-2xl mt-1" />
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <FaPhone className="text-amber-600 text-lg sm:text-2xl mt-0.5 sm:mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-bold text-gray-800">{t('contact.phone')}</h4>
-                    <p className="text-gray-600">+91-9637279798</p>
+                    <h4 className="font-bold text-xs sm:text-base text-gray-800">{t('contact.phone')}</h4>
+                    <p className="text-xs sm:text-base text-gray-600">+91-9637279798</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <FaEnvelope className="text-amber-600 text-2xl mt-1" />
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <FaEnvelope className="text-amber-600 text-lg sm:text-2xl mt-0.5 sm:mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-bold text-gray-800">{t('contact.email')}</h4>
-                    <p className="text-gray-600">more.anil1693@gmail.com</p>
+                    <h4 className="font-bold text-xs sm:text-base text-gray-800">{t('contact.email')}</h4>
+                    <p className="text-xs sm:text-base text-gray-600 break-all">more.anil1693@gmail.com</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <FaWhatsapp className="text-amber-600 text-2xl mt-1" />
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <FaWhatsapp className="text-amber-600 text-lg sm:text-2xl mt-0.5 sm:mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-bold text-gray-800">WhatsApp</h4>
+                    <h4 className="font-bold text-xs sm:text-base text-gray-800">WhatsApp</h4>
                     <a 
                       href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-amber-600 hover:text-amber-700 font-semibold"
+                      className="text-amber-600 hover:text-amber-700 font-semibold text-xs sm:text-base"
                     >
                       Chat with us
                     </a>
@@ -468,20 +468,20 @@ export default function InquiryForm({ projectData }) {
               </div>
             </div>
 
-            <div className="bg-amber-50 p-8 rounded-lg border border-amber-200">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Quick Chat Options</h3>
+            <div className="bg-amber-50 p-4 sm:p-6 md:p-8 rounded-lg border border-amber-200">
+              <h3 className="text-base sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Quick Chat Options</h3>
               <div className="space-y-3">
                 <a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg transition"
+                  className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition text-xs sm:text-sm"
                 >
                   <FaWhatsapp className="mr-2" /> Chat on WhatsApp
                 </a>
                 <a
                   href="mailto:more.anil1693@gmail.com"
-                  className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition"
+                  className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition text-xs sm:text-sm"
                 >
                   <FaEnvelope className="mr-2" /> {t('contact.send')}
                 </a>
