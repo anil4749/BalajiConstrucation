@@ -8,12 +8,21 @@ export default function HeroSection() {
   const heroImageUrl = DRIVE_IMAGES?.hero ? getDriveImageUrl(DRIVE_IMAGES.hero) : '';
 
   return (
-    <section className="relative w-full min-h-screen sm:min-h-screen overflow-hidden"> 
-      {/* Responsive Hero Image - Fills entire section without gaps */}
+    <section className="relative w-full min-h-screen sm:min-h-screen overflow-hidden bg-gray-100"> 
+      {/* Blurred Background Layer - Same image with blur and brightness */}
+      <img 
+        src={heroImageUrl || '/placeholder-hero.jpg'}
+        alt="Hero Background Blur"
+        className="absolute inset-0 w-full h-full object-cover object-center filter blur-lg brightness-50"
+        loading="lazy"
+        style={{ filter: 'blur(4px) brightness(0.6)', transform: 'scale(1.1)' }}
+      />
+      
+      {/* Main Hero Image - Sharp and clear */}
       <img 
         src={heroImageUrl || '/placeholder-hero.jpg'}
         alt="Hero Background"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-contain md:object-cover object-center"
         loading="lazy"
         onError={(e) => e.target.style.display = 'none'}
       />
