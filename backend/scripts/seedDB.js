@@ -72,63 +72,67 @@ const sample_projects = [
       'https://example.com/docs/layout-plan.pdf'
     ]
   },
-  {
-    title: 'Balaji Premium Row Houses',
-    description: 'Elegant 2-3 BHK row houses with contemporary design. Perfect for investors and homebuyers seeking modern living spaces. Strategically located in Parola with excellent amenities.',
-    location: 'Parola, Dist. Jalgaon',
-    type: 'Row House',
-    status: 'Ongoing',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop',
-    totalUnits: 24,
-    availableUnits: 12,
-    soldUnits: 12,
-    priceRange: '₹20 - 32 Lakh',
-    currentPrice: '₹20 Lakh - ₹32 Lakh',
-    futurePrice: '₹25 Lakh - ₹38 Lakh',
-    reraNumber: 'PRM/MH/RERA/2001/2024',
-    startDate: 'March 2024',
-    completionDate: 'September 2025',
-    developmentStage: '55% Complete',
-    pricePerSqft: '₹4,000 per sq.ft',
-    totalArea: '2,000 Sq.ft',
-    noOfFloors: 2,
-    noOfBedrooms: '2-3 BHK',
-    noOfBathrooms: '2-3',
-    balconyArea: '250 Sq.ft',
-    carpetArea: '1,200 Sq.ft',
-    builtUpArea: '1,500 Sq.ft',
-    planningPictures: [
-      'https://images.unsplash.com/photo-1541123603104-852f7e8057f0?w=500&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=400&fit=crop'
-    ],
-    layoutImages: [
-      'https://images.unsplash.com/photo-1605276374104-dee2a0db896d?w=500&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=400&fit=crop'
-    ],
-    beforeDevelopmentImages: [
-      'https://images.unsplash.com/photo-1578992220575-2b9938810129?w=500&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1577005505632-d01ee1b07069?w=500&h=400&fit=crop'
-    ],
-    currentSiteImages: [
-      'https://images.unsplash.com/photo-1590136579312-94651dfd596d?w=500&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1582268611471-716ecbe3060e?w=500&h=400&fit=crop'
-    ],
-    completionRenderImages: [
-      'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1570129477492-45a003537e1d?w=500&h=400&fit=crop'
-    ],
-    insideViewImages: [
-      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=500&h=400&fit=crop'
-    ],
-    outsideViewImages: [
-      'https://images.unsplash.com/photo-1504437261749-3ef45a1b9d96?w=500&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&h=400&fit=crop'
-    ],
-    amenities: ['Gated Community', 'Landscaping', 'Car Parking', '24/7 Security', 'Water Storage', 'Community Spaces', 'Green Area', 'Street Lights'],
-    legalDocuments: ['https://example.com/docs/project-approval.pdf', 'https://example.com/docs/rera-registration.pdf']
-  },
+{
+  "title": "Balaji Luxury Row House",
+  "description": "Stylish 1 BHK row houses with contemporary design. Perfect for investors and homebuyers seeking modern living spaces.",
+  "location": "Tambe Nager, Parola",
+  "type": "Row House",
+  "status": "Completed",
+  "image": "1LKAwd5bWGCbqRgX0ZK2FzCIXkjnFgEkn",
+  "totalUnits": 3,
+  "availableUnits": 2,
+  "soldUnits": 1,
+  "priceRange": "₹23 - 30 L",
+  "currentPrice": "₹23 L - ₹30 L",
+  "futurePrice": "₹27 L - ₹35 L",
+  "amenities": [
+    "Water Geyser",
+    "Parking"
+  ],
+  "reraNumber": "PRM/KA/RERA/1502/2025",
+  "legalDocuments": [
+    "https://example.com/docs/completion-certificate.pdf"
+  ],
+  "startDate": "May 2025",
+  "completionDate": "March 2026",
+  "pricePerSqft": "₹2,000 per sq.ft",
+  "developmentStage": "100% Complete",
+  "planningPictures": [
+    "1LKAwd5bWGCbqRgX0ZK2FzCIXkjnFgEkn"
+  ],
+  "layoutImages": [
+    "1LKAwd5bWGCbqRgX0ZK2FzCIXkjnFgEkn"
+  ],
+  "beforeDevelopmentImages": [
+    "1LKAwd5bWGCbqRgX0ZK2FzCIXkjnFgEkn"
+  ],
+  "currentSiteImages": [
+    "1LKAwd5bWGCbqRgX0ZK2FzCIXkjnFgEkn"
+  ],
+  "completionRenderImages": [
+    "1LKAwd5bWGCbqRgX0ZK2FzCIXkjnFgEkn"
+  ],
+  "insideViewImages": [
+    "1LKAwd5bWGCbqRgX0ZK2FzCIXkjnFgEkn"
+  ],
+  "outsideViewImages": [
+    "1LKAwd5bWGCbqRgX0ZK2FzCIXkjnFgEkn",
+    "1sk8LgBD_7xRxDxlJIjG3myhRas7INoPS",
+    "1raEvFZRF8iX8NxCV1hpuKy3jlc29xreJ",
+    "1RMBapWeoWgod1WHl5b2Wsz_3F2Fps6QI",
+    "1gRVGkMogNHtojFFD5kmUarlKBC77l3D3"
+  ],
+  "totalArea": "650 Sq.ft",
+  "noOfFloors": 1,
+  "noOfBedrooms": "1 BHK",
+  "noOfBathrooms": "1",
+  "balconyArea": "32 Sq.ft",
+  "carpetArea": "700 Sq.ft",
+  "builtUpArea": "650 Sq.ft",
+  "createdAt": {
+    "$date": "2026-03-26T19:22:03.438Z"
+  }
+},
   {
     title: 'Balaji Nagar Plots',
     description: 'Spacious residential plots in prime location of Parola. Excellent for building your dream home. Well-planned layout with all modern facilities and infrastructure.',

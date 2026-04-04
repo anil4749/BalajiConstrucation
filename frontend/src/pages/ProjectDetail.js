@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { getProjectDetail } from '../services/api';
+import { convertProjectImageUrls } from '../utils/imageUrlHelper';
 import { FaMapMarkerAlt, FaRuler, FaCheckCircle, FaDownload } from 'react-icons/fa';
 
 export default function ProjectDetail() {
@@ -18,7 +19,22 @@ export default function ProjectDetail() {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const data = await getProjectDetail(id);
+        let data = await getProjectDetail(id);
+        // Convert Google Drive image URLs to backend proxy URLs
+        data = convertProjectImageUrls(data);
+        console.log('✅ Project data loaded and images converted:', {
+          title: data.title,
+          mainImage: data.image,
+          totalImages: [
+            data.planningPictures?.length || 0,
+            data.layoutImages?.length || 0,
+            data.beforeDevelopmentImages?.length || 0,
+            data.currentSiteImages?.length || 0,
+            data.completionRenderImages?.length || 0,
+            data.insideViewImages?.length || 0,
+            data.outsideViewImages?.length || 0
+          ].reduce((a, b) => a + b, 0)
+        });
         setProject(data);
         if (data.image) {
           setSelectedImage(data.image);

@@ -11,6 +11,15 @@ const router = express.Router();
  * 
  * Example: GET /api/images/drive/1LD1VDYTfffx2TQzyZgidvYy8ZpPP3WOJ
  */
+
+// Handle CORS preflight requests
+router.options('/drive/:fileId', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Range');
+  res.header('Access-Control-Max-Age', '86400');
+  res.sendStatus(200);
+});
 router.get('/drive/:fileId', async (req, res) => {
   try {
     const { fileId } = req.params;
@@ -34,21 +43,54 @@ router.get('/drive/:fileId', async (req, res) => {
     // Set content type based on what Google Drive returns
     const contentType = response.headers['content-type'] || 'image/jpeg';
     
-    // Set proper cache headers
+    // Set comprehensive CORS and cache headers for production
     res.set('Content-Type', contentType);
-    res.set('Cache-Control', 'public, max-age=86400'); // Cache for 24 hours
+    res.set('Content-Length', response.data.length);
+    res.set('Cache-Control', 'public, max-age=86400, immutable'); // Cache for 24 hours
+    
+    // CORS Headers - Allow cross-origin image access
     res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+    res.set('Access-Control-Allow-Headers', 'Content-Type, Range');
+    res.set('Access-Control-Expose-Headers', 'Content-Length, Content-Type, Content-Range');
+    res.set('Access-Control-Max-Age', '86400');
+    
+    // Security headers
+    res.set('Cross-Origin-Resource-Policy', 'cross-origin');
+    res.set('Timing-Allow-Origin', '*');
+    
+    // Prevent caching issues
+    res.set('ETag', `"${Buffer.from(response.data).toString('base64').slice(0, 20)}"`);
     
     res.send(response.data);
   } catch (error) {
-    console.error('Error fetching Google Drive image:', error.message);
+    console.error('❌ Error fetching Google Drive image:', {
+      fileId: req.params.fileId,
+      message: error.message,
+      status: error.response?.status,
+      statusText: error.response?.statusText
+    });
+    
+    // Set CORS headers on error responses too
+    res.set('Access-Control-Allow-Origin', '*');
     
     if (error.response?.status === 404) {
-      return res.status(404).json({ error: 'Image not found on Google Drive' });
+      return res.status(404).json({ 
+        error: 'Image not found on Google Drive',
+        fileId: req.params.fileId 
+      });
+    }
+    
+    if (error.code === 'ECONNABORTED') {
+      return res.status(504).json({ 
+        error: 'Image request timeout',
+        message: 'Google Drive image took too long to load'
+      });
     }
     
     res.status(500).json({ 
       error: 'Failed to fetch image from Google Drive',
+      fileId: req.params.fileId,
       message: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
