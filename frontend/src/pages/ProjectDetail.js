@@ -104,7 +104,7 @@ export default function ProjectDetail() {
             </div>
             {project.reraNumber && (
               <div className="text-left">
-                <p className="text-xs text-gray-400 mb-1">RERA Number</p>
+                <p className="text-xs text-gray-400 mb-1">{t('projectDetail.reraNumber')}</p>
                 <p className="text-sm sm:text-base font-bold">{project.reraNumber}</p>
               </div>
             )}
@@ -257,34 +257,34 @@ export default function ProjectDetail() {
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
             <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">Project Overview</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">{t('projectDetail.projectOverview')}</h3>
               <p className="text-xs sm:text-sm md:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">{project.description}</p>
               
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">Project Type:</span>
+                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">{t('projectDetail.projectType')}:</span>
                   <span className="text-xs sm:text-sm text-gray-600">{project.type}</span>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">Total Units:</span>
+                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">{t('projectDetail.totalUnits')}:</span>
                   <span className="text-xs sm:text-sm text-gray-600">{project.totalUnits}</span>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">Available Units:</span>
+                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">{t('projectDetail.availableUnits')}:</span>
                   <span className="text-xs sm:text-sm text-green-600 font-bold">{project.availableUnits}</span>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">Sold Units:</span>
+                  <span className="font-semibold text-gray-700 text-xs sm:text-sm">{t('projectDetail.soldUnits')}:</span>
                   <span className="text-xs sm:text-sm text-amber-600 font-bold">{project.soldUnits || 0}</span>
                 </div>
               </div>
             </div>
 
             <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">Key Highlights</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">{t('projectDetail.keyHighlights')}</h3>
               {project.amenities && project.amenities.length > 0 && (
                 <div className="mb-4 sm:mb-6">
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-2 sm:mb-3">Amenities</h4>
+                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-2 sm:mb-3">{t('projectDetail.tabAmenities')}</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {project.amenities.map((amenity, i) => (
                       <div key={i} className="flex items-center text-xs sm:text-sm text-gray-600">
@@ -302,35 +302,35 @@ export default function ProjectDetail() {
         {/* Specifications Tab */}
         {activeTab === 'specifications' && (
           <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8 mb-8 sm:mb-12">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Project Specifications</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">{t('projectDetail.projectSpecifications')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               <div>
                 <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3 sm:mb-4 flex items-center">
                   <FaRuler className="mr-2 text-amber-600" />
-                  Area Details
+                  {t('projectDetail.areaDetails')}
                 </h4>
                 <div className="space-y-2 sm:space-y-3">
                   {project.totalArea && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Total Area</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.totalArea')}</p>
                       <p className="text-sm sm:text-base font-semibold text-gray-800">{project.totalArea}</p>
                     </div>
                   )}
                   {project.carpetArea && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Carpet Area</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.carpetArea')}</p>
                       <p className="text-sm sm:text-base font-semibold text-gray-800">{project.carpetArea}</p>
                     </div>
                   )}
                   {project.builtUpArea && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Built-up Area</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.builtUpArea')}</p>
                       <p className="text-sm sm:text-base font-semibold text-gray-800">{project.builtUpArea}</p>
                     </div>
                   )}
                   {project.balconyArea && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Balcony Area</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.balconyArea')}</p>
                       <p className="text-sm sm:text-base font-semibold text-gray-800">{project.balconyArea}</p>
                     </div>
                   )}
@@ -338,23 +338,23 @@ export default function ProjectDetail() {
               </div>
 
               <div>
-                <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3 sm:mb-4">Unit Details</h4>
+                <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3 sm:mb-4">{t('projectDetail.unitDetails')}</h4>
                 <div className="space-y-2 sm:space-y-3">
                   {project.noOfFloors && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Number of Floors</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.noOfFloors')}</p>
                       <p className="text-sm sm:text-base font-semibold text-gray-800">{project.noOfFloors}</p>
                     </div>
                   )}
                   {project.noOfBedrooms && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Bedrooms</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.bedrooms')}</p>
                       <p className="text-sm sm:text-base font-semibold text-gray-800">{project.noOfBedrooms}</p>
                     </div>
                   )}
                   {project.noOfBathrooms && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Bathrooms</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.bathrooms')}</p>
                       <p className="text-sm sm:text-base font-semibold text-gray-800">{project.noOfBathrooms}</p>
                     </div>
                   )}
@@ -362,17 +362,17 @@ export default function ProjectDetail() {
               </div>
 
               <div>
-                <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3 sm:mb-4">Price Details</h4>
+                <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3 sm:mb-4">{t('projectDetail.priceDetails')}</h4>
                 <div className="space-y-2 sm:space-y-3">
                   {project.pricePerSqft && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Price per Sq.ft</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.pricePerSqft')}</p>
                       <p className="text-sm sm:text-base font-semibold text-gray-800">{project.pricePerSqft}</p>
                     </div>
                   )}
                   {project.currentPrice && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Current Price Range</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.currentPriceRange')}</p>
                       <p className="text-sm sm:text-base font-semibold text-amber-600">{project.currentPrice}</p>
                     </div>
                   )}
@@ -385,51 +385,51 @@ export default function ProjectDetail() {
         {/* Timeline Tab */}
         {activeTab === 'timeline' && (
           <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8 mb-8 sm:mb-12">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Project Timeline</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">{t('projectDetail.projectTimeline')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {project.startDate && (
                 <div className="border-l-4 border-amber-600 pl-3 sm:pl-4">
-                  <p className="text-gray-600 text-xs sm:text-sm mb-1">Project Started</p>
+                  <p className="text-gray-600 text-xs sm:text-sm mb-1">{t('projectDetail.projectStarted')}</p>
                   <p className="text-base sm:text-lg md:text-xl font-bold text-gray-800">{project.startDate}</p>
                 </div>
               )}
               {project.developmentStage && (
                 <div className="border-l-4 border-blue-600 pl-3 sm:pl-4">
-                  <p className="text-gray-600 text-xs sm:text-sm mb-1">Current Progress</p>
+                  <p className="text-gray-600 text-xs sm:text-sm mb-1">{t('projectDetail.currentProgress')}</p>
                   <p className="text-base sm:text-lg md:text-xl font-bold text-gray-800">{project.developmentStage}</p>
                 </div>
               )}
               {project.completionDate && (
                 <div className="border-l-4 border-green-600 pl-3 sm:pl-4">
-                  <p className="text-gray-600 text-xs sm:text-sm mb-1">Expected Completion</p>
+                  <p className="text-gray-600 text-xs sm:text-sm mb-1">{t('projectDetail.expectedCompletion')}</p>
                   <p className="text-base sm:text-lg md:text-xl font-bold text-gray-800">{project.completionDate}</p>
                 </div>
               )}
             </div>
           </div>
-        )}
+        )}}
 
         {/* Pricing Tab */}
         {activeTab === 'pricing' && (
           <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8 mb-8 sm:mb-12">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Price Information</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">{t('projectDetail.priceInformation')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-8">
               <div className="border-2 border-amber-200 rounded-lg p-3 sm:p-4 md:p-6 bg-amber-50">
-                <h4 className="text-sm sm:text-base font-bold text-amber-900 mb-3 sm:mb-4">Current Pricing</h4>
+                <h4 className="text-sm sm:text-base font-bold text-amber-900 mb-3 sm:mb-4">{t('projectDetail.currentPricing')}</h4>
                 <div className="space-y-2 sm:space-y-3">
                   <div>
-                    <p className="text-gray-600 text-xs sm:text-sm">Price Range</p>
+                    <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.priceRange')}</p>
                     <p className="text-lg sm:text-xl md:text-2xl font-bold text-amber-600">{project.priceRange}</p>
                   </div>
                   {project.currentPrice && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Current Price</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.currentPrice')}</p>
                       <p className="text-base sm:text-lg md:text-xl font-semibold text-amber-700">{project.currentPrice}</p>
                     </div>
                   )}
                   {project.pricePerSqft && (
                     <div>
-                      <p className="text-gray-600 text-xs sm:text-sm">Per Sq.ft</p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{t('projectDetail.perSqft')}</p>
                       <p className="text-sm sm:text-base md:text-lg font-semibold text-amber-700">{project.pricePerSqft}</p>
                     </div>
                   )}
@@ -437,10 +437,10 @@ export default function ProjectDetail() {
               </div>
 
               <div className="border-2 border-green-200 rounded-lg p-3 sm:p-4 md:p-6 bg-green-50">
-                <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 sm:mb-4">Future Pricing</h4>
+                <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 sm:mb-4">{t('projectDetail.futurePricing')}</h4>
                 {project.futurePrice ? (
                   <div>
-                    <p className="text-gray-600 text-xs sm:text-sm mb-2">Expected Future Price</p>
+                    <p className="text-gray-600 text-xs sm:text-sm mb-2">{t('projectDetail.expectedFuturePrice')}</p>
                     <p className="text-lg sm:text-xl md:text-2xl font-bold text-green-600">{project.futurePrice}</p>
                     <p className="text-xs sm:text-sm text-green-700 mt-3 sm:mt-4">
                       Prices subject to change based on project progress and market conditions
@@ -457,7 +457,7 @@ export default function ProjectDetail() {
         {/* Amenities Tab */}
         {activeTab === 'amenities' && (
           <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8 mb-8 sm:mb-12">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Amenities & Features</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">{t('projectDetail.amenitiesFeatures')}</h3>
             {project.amenities && project.amenities.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
                 {project.amenities.map((amenity, i) => (
@@ -476,17 +476,17 @@ export default function ProjectDetail() {
         {/* Documents Tab */}
         {activeTab === 'documents' && (
           <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-8 mb-8 sm:mb-12">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Legal Documents</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">{t('projectDetail.legalDocuments')}</h3>
             <div className="space-y-3 sm:space-y-4">
               {project.reraNumber && (
                 <div className="p-2 sm:p-3 md:p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                  <p className="text-gray-600 text-xs sm:text-sm mb-1">RERA Registration Number</p>
+                  <p className="text-gray-600 text-xs sm:text-sm mb-1">{t('projectDetail.reraNumber')}</p>
                   <p className="text-sm sm:text-base md:text-lg font-bold text-blue-800">{project.reraNumber}</p>
                 </div>
               )}
               {project.legalDocuments && project.legalDocuments.length > 0 ? (
                 <div>
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-2 sm:mb-3">Available Documents</h4>
+                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-2 sm:mb-3">{t('projectDetail.availableDocuments')}</h4>
                   <div className="space-y-2">
                     {project.legalDocuments.map((doc, i) => (
                       <div key={i} className="flex items-center p-2 sm:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">

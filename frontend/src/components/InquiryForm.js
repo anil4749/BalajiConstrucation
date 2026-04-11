@@ -388,7 +388,7 @@ export default function InquiryForm({ projectData }) {
                     placeholder="50"
                     min="0"
                   />
-                  <span className="px-4 py-2 bg-gray-200 border border-l-0 border-gray-300 rounded-r-lg font-semibold text-gray-700">Lakh</span>
+                  <span className="px-4 py-2 bg-gray-200 border border-l-0 border-gray-300 rounded-r-lg font-semibold text-gray-700">{t('common.lakh')}</span>
                 </div>
                 {errors.budget && (
                   <p className="text-red-500 text-sm mt-1">{errors.budget}</p>
