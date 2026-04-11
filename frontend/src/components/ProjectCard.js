@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function ProjectCard({ project }) {
+  const { t } = useTranslation();
   const fallbackImage = 'https://balaji-api-guru.onrender.com/images/drive/1LKAwd5bWGCbqRgX0ZK2FzCIXkjnFgEkn';
   
   return (
@@ -44,22 +46,22 @@ export default function ProjectCard({ project }) {
         {/* Info Row */}
         <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
           <div>
-            <p className="text-xs text-gray-500 font-semibold">TYPE</p>
+            <p className="text-xs text-gray-500 font-semibold">{t('projects.type')}</p>
             <p className="text-xs sm:text-sm font-bold text-gray-800">{project.type}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-500 font-semibold">UNITS</p>
+            <p className="text-xs text-gray-500 font-semibold">{t('projects.units')}</p>
             <p className="text-xs sm:text-sm font-bold text-gray-800">{project.totalUnits}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-500 font-semibold">AVAILABLE</p>
+            <p className="text-xs text-gray-500 font-semibold">{t('projects.available')}</p>
             <p className="text-xs sm:text-sm font-bold text-gray-800">{project.availableUnits}</p>
           </div>
         </div>
 
         {/* Price */}
         <div className="mb-3 sm:mb-4 flex-1">
-          <p className="text-xs text-gray-500 font-semibold mb-1">FROM</p>
+          <p className="text-xs text-gray-500 font-semibold mb-1">{t('projects.from')}</p>
           <p className="text-xl sm:text-2xl font-bold text-amber-600">{project.priceRange}</p>
         </div>
 
@@ -68,7 +70,7 @@ export default function ProjectCard({ project }) {
           to={`/project/${project._id}`}
           className="w-full block text-center bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 sm:py-3 px-4 rounded transition text-xs sm:text-sm mt-auto"
         >
-          VIEW DETAILS
+          {t('projects.details')}
         </Link>
       </div>
     </div>

@@ -23,7 +23,11 @@
     "details": "तपशील पहा",
     "location": "स्थान",
     "year": "वर्ष",
-    "category": "श्रेणी"
+    "category": "श्रेणी",
+    "type": "प्रकार",
+    "units": "युनिट्स",
+    "available": "उपलब्ध",
+    "from": "पासून"
   },
   "projectDetail": {
     "back": "प्रकल्पांकडे परत या",

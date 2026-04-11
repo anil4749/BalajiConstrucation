@@ -23,7 +23,11 @@
     "details": "विवरण देखें",
     "location": "स्थान",
     "year": "वर्ष",
-    "category": "श्रेणी"
+    "category": "श्रेणी",
+    "type": "प्रकार",
+    "units": "इकाइयाँ",
+    "available": "उपलब्ध",
+    "from": "से"
   },
   "projectDetail": {
     "back": "परियोजनाओं पर वापस जाएं",

@@ -23,7 +23,11 @@
     "details": "View Details",
     "location": "Location",
     "year": "Year",
-    "category": "Category"
+    "category": "Category",
+    "type": "Type",
+    "units": "Units",
+    "available": "Available",
+    "from": "From"
   },
   "projectDetail": {
     "back": "Back to Projects",

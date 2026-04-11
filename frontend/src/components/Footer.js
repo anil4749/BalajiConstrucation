@@ -50,7 +50,7 @@ export default function Footer() {
                 <FaEnvelope className="flex-shrink-0" /> <span className="text-xs sm:text-base">more.anil1693@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2">
-                <FaMapMarkerAlt className="flex-shrink-0" /> <span>Pune, India</span>
+                <FaMapMarkerAlt className="flex-shrink-0" /> <span>Parola, district jalgaon,Maharastra, India</span>
               </div>
               <div className="flex space-x-3 sm:space-x-4 mt-4">
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="bg-green-500 p-2 sm:p-3 rounded-full hover:bg-green-600">
