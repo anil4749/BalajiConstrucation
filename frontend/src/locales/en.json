@@ -80,9 +80,6 @@
     "reraNumber": "RERA Registration Number",
     "availableDocuments": "Available Documents"
   },
-  "common": {
-    "lakh": "Lakh"
-  },
   "about": {
     "title": "About Balaji Construction",
     "whoWeAre": "Who We Are",
@@ -182,6 +179,7 @@
     "consulting": "Consulting"
   },
   "common": {
+    "lakh": "Lakh",
     "loading": "Loading...",
     "loadMore": "Load More",
     "noData": "No data available",

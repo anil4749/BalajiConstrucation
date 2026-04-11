@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import { submitInquiry } from '../services/api';
+import config from '../config/appConfig';
 
 export default function InquiryForm({ projectData }) {
   const { t } = useTranslation();
@@ -135,8 +136,7 @@ export default function InquiryForm({ projectData }) {
     }
   };
 
-  const whatsappNumber = '919637279798';
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi%20Balaji%20Construction%2C%20I%20am%20interested%20in%20your%20projects`;
+  const whatsappLink = config.whatsapp.getLink('Hi%20Balaji%20Construction%2C%20I%20am%20interested%20in%20your%20projects');
 
   // Project Inquiry Form - Simplified
   if (isProjectInquiry) {
@@ -234,12 +234,12 @@ export default function InquiryForm({ projectData }) {
             {/* Alternative Contact Methods */}
             <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
               <p className="text-center text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">{t('inquiry.contactDirectly')}</p>
-              <div className="flex justify-center w-full">
+              <div className="flex justify-center">
                 <a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 sm:py-3 px-4 sm:px-8 rounded-lg transition text-xs sm:text-base whitespace-nowrap"
+                  className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition text-sm sm:text-base"
                 >
                   <FaWhatsapp className="mr-2 flex-shrink-0" /> {t('inquiry.chatOnWhatsApp')}
                 </a>
@@ -441,7 +441,7 @@ export default function InquiryForm({ projectData }) {
                   <FaPhone className="text-amber-600 text-lg sm:text-2xl mt-0.5 sm:mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-xs sm:text-base text-gray-800">{t('contact.phone')}</h4>
-                    <p className="text-xs sm:text-base text-gray-600">+91-9637279798</p>
+                    <p className="text-xs sm:text-base text-gray-600">{config.contact.phone}</p>
                   </div>
                 </div>
 
@@ -449,7 +449,7 @@ export default function InquiryForm({ projectData }) {
                   <FaEnvelope className="text-amber-600 text-lg sm:text-2xl mt-0.5 sm:mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-xs sm:text-base text-gray-800">{t('contact.email')}</h4>
-                    <p className="text-xs sm:text-base text-gray-600 break-all">more.anil1693@gmail.com</p>
+                    <p className="text-xs sm:text-base text-gray-600 break-all">{config.contact.email}</p>
                   </div>
                 </div>
 

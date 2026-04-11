@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import { getProjectDetail } from '../services/api';
 import { convertProjectImageUrls } from '../utils/imageUrlHelper';
 import { FaMapMarkerAlt, FaRuler, FaCheckCircle, FaDownload } from 'react-icons/fa';
+import config from '../config/appConfig';
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -407,7 +408,7 @@ export default function ProjectDetail() {
               )}
             </div>
           </div>
-        )}}
+        )}
 
         {/* Pricing Tab */}
         {activeTab === 'pricing' && (
@@ -519,7 +520,7 @@ export default function ProjectDetail() {
               >
                 {t('projectDetail.inquireNow')}
               </button>
-              <a href="https://wa.me/919637279798" target="_blank" rel="noopener noreferrer" className="inline-block bg-green-500 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg font-bold text-xs sm:text-sm md:text-lg hover:bg-green-600 transition whitespace-nowrap">
+              <a href={config.whatsapp.getLink()} target="_blank" rel="noopener noreferrer" className="inline-block bg-green-500 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg font-bold text-xs sm:text-sm md:text-lg hover:bg-green-600 transition whitespace-nowrap">
                 {t('inquiry.chatOnWhatsApp')}
               </a>
             </div>

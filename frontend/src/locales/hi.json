@@ -80,9 +80,6 @@
     "reraNumber": "RERA पंजीकरण संख्या",
     "availableDocuments": "उपलब्ध दस्तावेज़"
   },
-  "common": {
-    "lakh": "लाख"
-  },
   "about": {
     "title": "बालाजी कंस्ट्रक्शन के बारे में",
     "whoWeAre": "हम कौन हैं",
@@ -182,6 +179,7 @@
     "consulting": "परामर्श"
   },
   "common": {
+    "lakh": "लाख",
     "loading": "लोड हो रहा है...",
     "loadMore": "अधिक लोड करें",
     "noData": "कोई डेटा उपलब्ध नहीं",
