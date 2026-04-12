@@ -477,15 +477,15 @@ export default function InquiryForm({ projectData }) {
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition text-xs sm:text-sm"
+                  className="w-full flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 md:px-8 rounded-lg transition text-sm sm:text-base"
                 >
-                  <FaWhatsapp className="mr-2" /> Chat on WhatsApp
+                  <FaWhatsapp className="mr-2 flex-shrink-0" /> Chat on WhatsApp
                 </a>
                 <a
                   href="mailto:more.anil1693@gmail.com"
-                  className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition text-xs sm:text-sm"
+                  className="w-full flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 md:px-8 rounded-lg transition text-sm sm:text-base"
                 >
-                  <FaEnvelope className="mr-2" /> {t('contact.send')}
+                  <FaEnvelope className="mr-2 flex-shrink-0" /> {t('contact.send')}
                 </a>
               </div>
             </div>
