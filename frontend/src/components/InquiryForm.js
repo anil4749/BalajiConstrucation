@@ -232,14 +232,14 @@ export default function InquiryForm({ projectData }) {
             </form>
 
             {/* Alternative Contact Methods */}
-            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
+            <div className="w-full mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
               <p className="text-center text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">{t('inquiry.contactDirectly')}</p>
-              <div className="flex justify-center">
+              <div className="w-full flex justify-center px-0 sm:px-0">
                 <a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition text-sm sm:text-base"
+                  className="w-full sm:w-auto inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 md:px-8 rounded-lg transition text-sm sm:text-base"
                 >
                   <FaWhatsapp className="mr-2 flex-shrink-0" /> {t('inquiry.chatOnWhatsApp')}
                 </a>
