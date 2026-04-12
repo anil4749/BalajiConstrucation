@@ -513,14 +513,14 @@ export default function ProjectDetail() {
               <h3 className="text-lg sm:text-xl md:text-3xl font-bold mb-1 sm:mb-2">{t('projectDetail.interestedTitle')}</h3>
               <p className="text-amber-100 text-xs sm:text-sm md:text-lg">{t('projectDetail.interestedDesc')}</p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full">
               <button 
                 onClick={() => navigate('/contact', { state: { projectId: project._id, projectTitle: project.title } })}
-                className="inline-block bg-white text-amber-600 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg font-bold text-xs sm:text-sm md:text-lg hover:bg-gray-100 transition whitespace-nowrap"
+                className="w-full sm:w-auto flex items-center justify-center bg-white text-amber-600 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg font-bold text-xs sm:text-sm md:text-lg hover:bg-gray-100 transition"
               >
                 {t('projectDetail.inquireNow')}
               </button>
-              <a href={config.whatsapp.getLink()} target="_blank" rel="noopener noreferrer" className="inline-block bg-green-500 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg font-bold text-xs sm:text-sm md:text-lg hover:bg-green-600 transition whitespace-nowrap">
+              <a href={config.whatsapp.getLink()} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto flex items-center justify-center bg-green-500 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg font-bold text-xs sm:text-sm md:text-lg hover:bg-green-600 transition">
                 {t('inquiry.chatOnWhatsApp')}
               </a>
             </div>
